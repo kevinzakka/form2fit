@@ -36,6 +36,13 @@ If you find this code useful, consider citing our work:
 
 ## Setup
 
+Create a new conda environment:
+
+```
+conda create -n form2fit python=3.6
+conda activate form2fit
+```
+
 Install the repository locally with pip.
 
 ```

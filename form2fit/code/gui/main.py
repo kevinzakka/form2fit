@@ -301,27 +301,31 @@ class Debugger(QDialog):
         self._is_correct_box.setText(msg)
 
     def _sample_click(self):
-        self._forward_network()
-        rand_idx = np.random.choice(np.arange(len(self.target_pixel_idxs)))
-        u_rand, v_rand = self.target_pixel_idxs[rand_idx]
-        self._draw_target([u_rand, v_rand])
-        u_s, v_s = self.source_pixel_idxs[rand_idx]
-        target_vector = self.out_t[:, :, u_rand, v_rand]
-        outs_flat = self.outs.view(self.outs.shape[0], self.outs.shape[1], -1)
-        target_vector_flat = target_vector.unsqueeze_(2).repeat(
-            (outs_flat.shape[0], 1, outs_flat.shape[2])
-        )
-        diff = outs_flat - target_vector_flat
-        dist = diff.pow(2).sum(1).sqrt()
-        self.heatmaps = dist.view(dist.shape[0], self._h, self._w).cpu().numpy()
-        predicted_best_idx = dist.min(dim=1)[0].argmin()
-        is_correct = predicted_best_idx == self.best_rot_idx
-        msg = "Correct!" if is_correct else "Wrong!"
-        self._set_prediction_text(msg)
-        min_val = self.heatmaps[predicted_best_idx].argmin()
-        u_min, v_min = misc.make2d(min_val, self._w)
-        self._uv = [u_min, v_min, predicted_best_idx]
-        self._draw_rotations(heatmap=not self._is_switch)
+        if self._pair_idx > 0:
+            self._forward_network()
+            rand_idx = np.random.choice(np.arange(len(self.target_pixel_idxs)))
+            u_rand, v_rand = self.target_pixel_idxs[rand_idx]
+            self._draw_target([u_rand, v_rand])
+            u_s, v_s = self.source_pixel_idxs[rand_idx]
+            target_vector = self.out_t[:, :, u_rand, v_rand]
+            outs_flat = self.outs.view(self.outs.shape[0], self.outs.shape[1], -1)
+            target_vector_flat = target_vector.unsqueeze_(2).repeat(
+                (outs_flat.shape[0], 1, outs_flat.shape[2])
+            )
+            diff = outs_flat - target_vector_flat
+            dist = diff.pow(2).sum(1).sqrt()
+            self.heatmaps = dist.view(dist.shape[0], self._h, self._w).cpu().numpy()
+            predicted_best_idx = dist.min(dim=1)[0].argmin()
+            is_correct = predicted_best_idx == self.best_rot_idx
+            msg = "Correct!" if is_correct else "Wrong!"
+            self._set_prediction_text(msg)
+            min_val = self.heatmaps[predicted_best_idx].argmin()
+            u_min, v_min = misc.make2d(min_val, self._w)
+            self._uv = [u_min, v_min, predicted_best_idx]
+            self._draw_rotations(heatmap=not self._is_switch)
+        else:
+            print("[!] You must first click next to load a data sample.")
+
 
     def _get_mouse_pos(self, event):
         v = event.pos().x()

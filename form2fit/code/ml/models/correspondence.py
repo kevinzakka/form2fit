@@ -8,7 +8,7 @@ from torch.nn import functional as F
 from form2fit.code.ml.models.base import BaseModel
 from form2fit.code.ml.models.fcn import FCNet
 from form2fit.code.utils.misc import anglepie
-from walle.core import import RotationMatrix
+from walle.core import RotationMatrix
 
 from torchvision import transforms
 

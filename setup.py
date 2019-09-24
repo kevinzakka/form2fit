@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="form2fit",
-    version="0.1",
+    version="0.0.1",
     description="Form2Fit Code and Benchmark",
     author="Kevin Zakka",
     python_requires=">=3.6",

@@ -1,3 +1,3 @@
-from kitting.ml.models.correspondence import CorrespondenceNet
-from kitting.ml.models.placement import PlacementNet
-from kitting.ml.models.suction import SuctionNet
+from form2fit.code.ml.models.correspondence import CorrespondenceNet
+from form2fit.code.ml.models.placement import PlacementNet
+from form2fit.code.ml.models.suction import SuctionNet

@@ -3,7 +3,7 @@
 
 import numpy as np
 
-from kitting.utils.misc import rotate_uv
+from form2fit.code.utils.misc import rotate_uv
 
 
 def make1d(uv, num_cols):
