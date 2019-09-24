@@ -33,7 +33,6 @@ If you find this code useful, consider citing our work:
 - [ ] Add the generalization kits to benchmark.
 - [ ] Add code to process raw data collection data into Form2Fit format.
 - [ ] Add code for training the different networks.
-- [ ] Add PyQT GUI to visualize trained descriptor networks.
 
 ## Setup
 
@@ -81,6 +80,7 @@ The different parts of Form2Fit reside in various subfolders inside the `code` d
   * `dataloader`: dataloader code for place, suction and matching modules.
   * `models`: network architectures for place, suction and matching modules.
   * `losses.py`: triplet loss with negative mining.
+* `gui`: a PyQt GUI for visualizing matching network heatmaps interactively.
 * `planner`: contains the planner module code.
 
 You can download model weights by running:
