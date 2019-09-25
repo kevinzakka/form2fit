@@ -8,7 +8,7 @@ setup(
     author="Kevin Zakka",
     python_requires=">=3.6",
     install_requires=[
-        "numpy>=1.0.0,<1.16.3",
+        "numpy>=1.0.0",
         "scikit-image==0.15.0",
         "torch>=0.4",
         "open3d-python>=0.5",

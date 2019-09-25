@@ -1,3 +1,5 @@
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 import open3d as o3d
@@ -14,9 +16,9 @@ def plot_rgbd(rgb, depth, gray=False, name=None):
     for ax in axes:
         ax.axis("off")
     if name is not None:
-        plt.savefig(
-            "/home/ai02/Desktop/screenshots/{}.png".format(name), format="png", dpi=150
-        )
+        if not os.path.exists("./plots/"):
+            os.makedirs("./plots/")
+        plt.savefig("./plots/{}.png".format(name), format="png", dpi=150)
     plt.show()
 
 
@@ -100,9 +102,9 @@ def plot_correspondences(
         ax.plot(vs, us, "ro--", linewidth=3.0, alpha=0.4)
         ax.axis("off")
     if name is not None:
-        plt.savefig(
-            "/Users/kevin/Desktop/debug/{}.png".format(name), format="png", dpi=150
-        )
+        if not os.path.exists("./plots/"):
+            os.makedirs("./plots/")
+        plt.savefig("./plots/{}.png".format(name), format="png", dpi=150)
     plt.show()
 
 
@@ -117,7 +119,9 @@ def plot_suction(height_c, height_d, suction, name=None, gray=True):
         ax.scatter(neg_suction[:, 1], neg_suction[:, 0], color="r")
         ax.axis("off")
     if name is not None:
-        plt.savefig("/home/ai02/Desktop/screenshots/{}.png".format(name), format="png", dpi=150)
+        if not os.path.exists("./plots/"):
+            os.makedirs("./plots/")
+        plt.savefig("./plots/{}.png".format(name), format="png", dpi=150)
     plt.show()
 
 
@@ -132,16 +136,13 @@ def plot_placement(height_c, height_d, placement, name=None, gray=True):
         ax.scatter(neg_placement[:, 1], neg_placement[:, 0], color="r")
         ax.axis("off")
     if name is not None:
-        plt.savefig(
-            "/home/ai02/Desktop/screenshots/{}.png".format(name), format="png", dpi=150
-        )
+        if not os.path.exists("./plots/"):
+            os.makedirs("./plots/")
+        plt.savefig("./plots/{}.png".format(name), format="png", dpi=150)
     plt.show()
 
 
 def plot_loss(arr, window=50, figsize=(20, 10), name=None):
-    """TODO: Add outlier elimination.
-    """
-
     def _rolling_window(a, window):
         shape = a.shape[:-1] + (a.shape[-1] - window + 1, window)
         strides = a.strides + (a.strides[-1],)
@@ -162,13 +163,13 @@ def plot_loss(arr, window=50, figsize=(20, 10), name=None):
     plt.xlabel("Iteration #")
     plt.ylabel("Loss")
     if name is not None:
-        plt.savefig(
-            "/home/ai02/Desktop/screenshots/{}.png".format(name), format="png", dpi=200
-        )
+        if not os.path.exists("./plots/"):
+            os.makedirs("./plots/")
+        plt.savefig("./plots/{}.png".format(name), format="png", dpi=150)
     plt.show()
 
 
-def plot_losses(arr1, arr2, figsize=(20, 10), save=None):
+def plot_losses(arr1, arr2, figsize=(20, 10), name=None):
     fig, ax = plt.subplots(figsize=figsize)
     for arr, lbl in zip([arr1, arr2], ["train", "test"]):
         ax.plot(arr, linewidth=0.9, label=lbl)
@@ -176,8 +177,10 @@ def plot_losses(arr1, arr2, figsize=(20, 10), save=None):
     plt.xlabel("Iteration #")
     plt.ylabel("Loss")
     plt.legend(loc="upper right")
-    if save is not None:
-        plt.savefig(save, format="png", dpi=200)
+    if name is not None:
+        if not os.path.exists("./plots/"):
+            os.makedirs("./plots/")
+        plt.savefig("./plots/{}.png".format(name), format="png", dpi=150)
     else:
         u_min, v_min = misc.make2d(min_val, w)
         plt.show()

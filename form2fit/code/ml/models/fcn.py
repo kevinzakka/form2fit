@@ -153,7 +153,11 @@ class FCNet(BaseModel):
 
 class Interpolate(nn.Module):
     def __init__(
-        self, size=None, scale_factor=None, mode="nearest", align_corners=None
+        self,
+        size=None,
+        scale_factor=None,
+        mode="nearest",
+        align_corners=None,
     ):
         super().__init__()
 
