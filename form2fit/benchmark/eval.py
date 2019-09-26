@@ -20,7 +20,7 @@ from walle.utils.geometry import estimate_rigid_transform_rotm
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Evaluate Algorithm")
+    parser = argparse.ArgumentParser(description="Evaluate Algorithm on Train Partition")
     parser.add_argument("pose_pkl", type=str)
     parser.add_argument("--debug", type=lambda s: s.lower() in ["1", "true"], default=False)
     args, unparsed = parser.parse_known_args()

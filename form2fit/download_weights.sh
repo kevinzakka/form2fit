@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 echo "Downloading model weights..."
 cd code/ml/models
 fileid="1nAAs7Wbfe9wywi8LtYSg1jLaIe3zxVJJ"
@@ -8,5 +6,6 @@ curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}
 curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
 rm cookie
 unzip -q weights.zip
+rm -rf __MACOSX
 rm weights.zip
 echo "Done."

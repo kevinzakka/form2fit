@@ -27,7 +27,7 @@ BACKGROUND_SUBTRACT = {
     "tape-runner": (0.04, 0.047),
     "zoo-animals": None,
     "fruits": (0.04, 0.047),
-    "deodorant": (0.04, 0.047),
+    "deodorants": (0.04, 0.047),
 }
 
 # the watermelon fruit is 360-degree symmetrical
