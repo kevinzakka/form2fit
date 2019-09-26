@@ -33,7 +33,7 @@ If you find this code useful, consider citing our work:
 ### Documentation
 
 - [setup](docs/setup.md)
-- [about the Form2Fit benchmark](docs/data_organization.md)
+- [about the Form2Fit benchmark](docs/about_benchmark.md)
 - [reproducing paper results](docs/paper_code.md)
 - [evaluating a trained model](docs/evaluate_benchmark.md)
 - [model weights](docs/model_weights.md)
