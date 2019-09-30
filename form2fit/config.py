@@ -7,6 +7,7 @@ import numpy as np
 
 # directories
 root_dir = os.path.dirname(os.path.realpath(__file__))
+benchmark_dir = os.path.join(root_dir, "benchmark/data/")
 root_dir = os.path.join(root_dir, "code")
 ml_data_dir = os.path.join(root_dir, "ml/dataset/")
 weights_dir = os.path.join(root_dir, "ml/models/weights")

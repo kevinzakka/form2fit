@@ -96,5 +96,6 @@ if __name__ == "__main__":
 
     fig.tight_layout()
     plt.savefig(os.path.join(plot_dir, "4x4.pdf"), format="pdf", dpi=200)
+    plt.show()
     with open("avg_auc.json", "w") as fp:
         json.dump(aucs, fp, indent=4)

@@ -31,6 +31,8 @@ if __name__ == "__main__":
 
     accuracies = {}
     for kit_idx, data_dir in enumerate(kit_dirs):
+        if data_dir.split("/")[-1] == "deodorants":
+            continue
         print("{}/{}".format(kit_idx+1, len(kit_dirs)))
 
         estimated_poses = all_poses[data_dir.split("/")[-1]]

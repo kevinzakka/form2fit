@@ -127,9 +127,9 @@ def main(args):
                 correct += 1
             min_val = heatmaps[predicted_best_idx].argmin()
             u_min, v_min = np.unravel_index(min_val, (H, W))
-            predicted_kit_uvs.append([u_min, v_min])
-            obj_uvs.append([u, v])
-        print("acc: {}".format(correct / len(obj_idxs)))
+            predicted_kit_uvs.append([u_min.item(), v_min.item()])
+            obj_uvs.append([u.item(), v.item()])
+        # print("acc: {}".format(correct / len(obj_idxs)))
 
         # compute rotation majority
         best_rot = mode(rotations)[0][0]

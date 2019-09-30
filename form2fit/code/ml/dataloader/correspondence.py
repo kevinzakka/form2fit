@@ -22,8 +22,6 @@ from form2fit.code.utils import sampling
 from form2fit import config
 from walle.core import RotationMatrix, Orientation
 
-from ipdb import set_trace
-
 
 class CorrespondenceDataset(Dataset):
     """The correspondence network dataset.
@@ -103,22 +101,22 @@ class CorrespondenceDataset(Dataset):
 
         # load masks
         if self._markovian:
-            object_mask = np.load(os.path.join(name, "curr_object_mask.npy"))
-            hole_mask = np.load(os.path.join(name, "curr_hole_mask.npy"))
+            object_mask = np.load(os.path.join(name, "curr_object_mask.npy"), allow_pickle=True)
+            hole_mask = np.load(os.path.join(name, "curr_hole_mask.npy"), allow_pickle=True)
             kit_minus_hole_mask = np.load(
-                os.path.join(name, "curr_kit_minus_hole_mask.npy")
+                os.path.join(name, "curr_kit_minus_hole_mask.npy"), allow_pickle=True
             )
             kit_plus_hole_mask = np.load(
-                os.path.join(name, "curr_kit_plus_hole_mask.npy")
+                os.path.join(name, "curr_kit_plus_hole_mask.npy"), allow_pickle=True
             )
         else:
-            object_mask = np.load(os.path.join(name, "object_mask.npy"))
-            hole_mask = np.load(os.path.join(name, "hole_mask.npy"))
-            kit_minus_hole_mask = np.load(os.path.join(name, "kit_minus_hole_mask.npy"))
-            kit_plus_hole_mask = np.load(os.path.join(name, "kit_plus_hole_mask.npy"))
+            object_mask = np.load(os.path.join(name, "object_mask.npy"), allow_pickle=True)
+            hole_mask = np.load(os.path.join(name, "hole_mask.npy"), allow_pickle=True)
+            kit_minus_hole_mask = np.load(os.path.join(name, "kit_minus_hole_mask.npy"), allow_pickle=True)
+            kit_plus_hole_mask = np.load(os.path.join(name, "kit_plus_hole_mask.npy"), allow_pickle=True)
 
         # load correspondences
-        corrs = np.load(os.path.join(name, "corrs.npy"))
+        corrs = np.load(os.path.join(name, "corrs.npy"), allow_pickle=True)
 
         # fix weird npy behavior
         if corrs.ndim > 2:
@@ -127,7 +125,7 @@ class CorrespondenceDataset(Dataset):
             corrs = corrs.tolist()
 
         # compute all previous rotation quantizations indices
-        transforms = np.load(os.path.join(name, "transforms.npy"))
+        transforms = np.load(os.path.join(name, "transforms.npy"), allow_pickle=True)
         rotations = [np.rad2deg(misc.rotz2angle(t)) for t in transforms]
         rot_quant_indices = [self._quantize_rotation(r) for r in rotations]
 
@@ -673,8 +671,7 @@ def get_corr_loader(
         return [imgs, labels, centers]
 
     num_workers = min(num_workers, multiprocessing.cpu_count())
-    # root = os.path.join(config.ml_data_dir, foldername, dtype)
-    root = os.path.join("/Users/kevin/Desktop/form2fit/data/train/", foldername, dtype)
+    root = os.path.join(config.benchmark_dir, "train", foldername, dtype)
 
     dataset = CorrespondenceDataset(
         root,
