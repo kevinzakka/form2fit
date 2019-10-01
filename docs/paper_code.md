@@ -1,6 +1,6 @@
 ## Paper Code
 
-The different architectural components of Form2Fit reside in various subfolders inside the `code` directory. This does not include code for commanding the UR5 robot or the self-supervised data collection process.
+The different architectural components of Form2Fit reside in various subfolders inside the `code` directory. This does not include code for controlling the UR5e robot or the self-supervised data collection process.
 
 <p align="center">
 <img src="../assets/method.png" width=100% alt="Drawing">
@@ -30,7 +30,16 @@ We provide an implementation of the contrastive loss function with hard negative
 
 ## Planner
 
-The planner module class resides in `code/planner/`.
+The planner module class resides in `code/planner/`. Here's a code snippet for how to use it:
+
+```
+planner = Planner((uc, vc))  # instantiate planner with kit center
+ret = planner.plan(suction_scores, placement_scores, outs_s, outs_t)  # feed it suction and place heatmaps and descriptor maps
+
+best_place_uv = ret['best_place_uv']
+best_suction_uv = ret['best_suction_uv']
+best_rotation_idx = ret['best_rotation_idx']
+```
 
 ## GUI
 

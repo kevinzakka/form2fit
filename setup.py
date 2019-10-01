@@ -10,11 +10,11 @@ setup(
     install_requires=[
         "numpy>=1.0.0",
         "scikit-image>=0.15.0",
-        "torch>=0.4",
-        "open3d-python>=0.5",
-        "ipdb>=0.12",
+        "open3d-python==0.4.0.0",
         "PyQt5==5.9.2",
+        "torch",
         "torchvision",
-        "opencv-python"
+        "ipdb",
+        "opencv-python",
     ],
 )

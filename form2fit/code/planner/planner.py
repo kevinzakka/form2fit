@@ -13,7 +13,7 @@ class Planner:
     def __init__(self, center):
         self.center = center
 
-    def plan(self, suction_scores, place_scores, kit_descriptor_map, object_descriptor_map, suction_mask=None, place_mask=None, img1=None, img2=None, cnter=None):
+    def plan(self, suction_scores, place_scores, kit_descriptor_map, object_descriptor_map, suction_mask=None, place_mask=None, img1=None, img2=None):
         if suction_mask is not None:
             suction_scores[suction_mask[:, 0], suction_mask[:, 1]] = 0
         suction_coordinates = peak_local_max(suction_scores, min_distance=0, threshold_rel=0.1)
