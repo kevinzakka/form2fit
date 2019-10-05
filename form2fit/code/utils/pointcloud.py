@@ -72,16 +72,3 @@ def deproject(uv, depth, intr, extr):
     xyz = np.vstack([x, y, z]).T
     xyz_tr = transform_xyz(xyz, extr)
     return xyz_tr
-
-
-def project(xyz, intr):
-    """3D -> 2D.
-    """
-    cx, cy = intr[0, 2], intr[1, 2]
-    fx, fy = intr[0, 0], intr[1, 1]
-    x = xyz[:, 0]
-    y = xyz[:, 1]
-    z = xyz[:, 2]
-    v = np.round((x * fx / z) + cx).astype("int")
-    u = np.round((y * fy / z) + cy).astype("int")
-    return np.vstack([u, v]).T
