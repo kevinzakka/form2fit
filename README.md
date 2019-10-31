@@ -2,9 +2,9 @@
 
 Code for the paper
 
-**[Form2Fit: Learning Shape Priors for Generalizable Assembly from Self-Supervised Disassembly][1]**<br/>
+**[Form2Fit: Learning Shape Priors for Generalizable Assembly from Disassembly][1]**<br/>
 *Kevin Zakka, Andy Zeng, Johnny Lee, Shuran Song*<br/>
-[arxiv.org/abs/xxxx.xxxxx][2]<br/>
+[arxiv.org/abs/1910.13675][2]<br/>
 
 <p align="center">
 <img src="./assets/teaser.gif" width=100% alt="Drawing">
@@ -26,6 +26,7 @@ If you find this code useful, consider citing our work:
 @inproceedings{zakka2019form2fit,
   title={Form2Fit: Learning Shape Priors for Generalizable Assembly from Disassembly},
   author={Zakka, Kevin and Zeng, Andy and Lee, Johnny and Song, Shuran},
+  journal={arXiv preprint arXiv:1910.13675},
   year={2019}
 }
 ```
@@ -49,4 +50,4 @@ If you find this code useful, consider citing our work:
 This is not an officially supported Google product.
 
 [1]: https://form2fit.github.io/
-[2]: https://arxiv.org/abs/xxxx.xxxxx
+[2]: https://arxiv.org/abs/1910.13675
