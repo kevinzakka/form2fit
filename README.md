@@ -5,6 +5,7 @@ Code for the paper
 **[Form2Fit: Learning Shape Priors for Generalizable Assembly from Disassembly][1]**<br/>
 *Kevin Zakka, Andy Zeng, Johnny Lee, Shuran Song*<br/>
 [arxiv.org/abs/1910.13675][2]<br/>
+ICRA 2020
 
 <p align="center">
 <img src="./assets/teaser.gif" width=100% alt="Drawing">
