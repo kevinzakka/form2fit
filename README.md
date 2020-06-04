@@ -24,11 +24,11 @@ This repository contains:
 If you find this code useful, consider citing our work:
 
 ```
-@inproceedings{zakka2019form2fit,
+@inproceedings{zakka2020form2fit,
   title={Form2Fit: Learning Shape Priors for Generalizable Assembly from Disassembly},
   author={Zakka, Kevin and Zeng, Andy and Lee, Johnny and Song, Shuran},
-  journal={arXiv preprint arXiv:1910.13675},
-  year={2019}
+  booktitle={Proceedings of the IEEE International Conference on Robotics and Automation},
+  year={2020}
 }
 ```
 
