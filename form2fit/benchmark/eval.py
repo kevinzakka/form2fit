@@ -16,8 +16,6 @@ from form2fit.benchmark.metrics import *
 from form2fit.code.utils import common, misc
 from form2fit.code.utils.pointcloud import transform_xyz
 
-from walle.utils.geometry import estimate_rigid_transform_rotm
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Evaluate Algorithm on Train Partition")

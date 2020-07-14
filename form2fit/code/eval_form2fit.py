@@ -20,7 +20,6 @@ from form2fit.code.utils import misc, ml
 from form2fit.code.utils.pointcloud import transform_xyz
 
 from walle.core import Pose, RotationMatrix
-from walle.utils.geometry import estimate_rigid_transform_rotm
 
 
 def main(args):

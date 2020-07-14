@@ -16,7 +16,7 @@ from form2fit import config
 from form2fit.code.utils.pointcloud import transform_xyz
 from form2fit.code.utils import common
 
-from walle.utils.geometry import estimate_rigid_transform_rotm
+from walle.utils.geometry import estimate_rigid_transform
 
 
 if __name__ == "__main__":
@@ -128,9 +128,9 @@ if __name__ == "__main__":
             dst_xyz = np.hstack([dst_pts, zs])
             dst_xyz[:, 0] = (dst_xyz[:, 0] * config.HEIGHTMAP_RES) + config.VIEW_BOUNDS[0, 0]
             dst_xyz[:, 1] = (dst_xyz[:, 1] * config.HEIGHTMAP_RES) + config.VIEW_BOUNDS[1, 0]
-            R, t = estimate_rigid_transform_rotm(src_xyz, dst_xyz)
+            R, t = estimate_rigid_transform(src_xyz, dst_xyz)
             tr = np.eye(4)
-            tr[:3, :3] = R
+            tr[:4, :4] = R
             tr[:3, 3] = t
 
             # compute estimated transform
