@@ -16,5 +16,6 @@ setup(
         "torchvision",
         "ipdb",
         "opencv-python",
+        "tqdm",
     ],
 )
